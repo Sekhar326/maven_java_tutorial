@@ -3,11 +3,11 @@ pipeline {
         label "windows"
     }
     tools {
-        maven 'Maven3.1.1'
-        jdk 'java8'
+        maven 'maven'
+        jdk 'java'
     }
     stages {
-        stage ('Initialize') {
+        stage ('DEV Start') {
             steps {
                 bat '''
                     echo "PATH = %PATH%"
@@ -18,7 +18,7 @@ pipeline {
 
         stage ('Build') {
             steps {
-                    bat 'cd NumberGenerator & mvn install'
+                    bat 'cd NumberGenerator & mvn test & mvn install'
             }
              post {
                 success {
